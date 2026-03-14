@@ -1,0 +1,1 @@
+- For handling .csv used this https://github.com/d99kris/rapidcsv
