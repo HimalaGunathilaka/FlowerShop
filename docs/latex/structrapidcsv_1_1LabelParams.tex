@@ -1,0 +1,53 @@
+\doxysection{rapidcsv\+::Label\+Params Struct Reference}
+\hypertarget{structrapidcsv_1_1LabelParams}{}\label{structrapidcsv_1_1LabelParams}\index{rapidcsv::LabelParams@{rapidcsv::LabelParams}}
+
+
+Datastructure holding parameters controlling which row and column should be treated as labels.  
+
+
+
+
+{\ttfamily \#include $<$rapidcsv.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structrapidcsv_1_1LabelParams_a410048d60e7012e586e40d15692b748a}{Label\+Params}} (const int p\+Column\+Name\+Idx=0, const int p\+Row\+Name\+Idx=-\/1)
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{structrapidcsv_1_1LabelParams_a564b7a874bbcb23fdd4ca68dd6f8e3c8}\label{structrapidcsv_1_1LabelParams_a564b7a874bbcb23fdd4ca68dd6f8e3c8} 
+int {\bfseries m\+Column\+Name\+Idx}
+\begin{DoxyCompactList}\small\item\em specifies the zero-\/based row index of the column labels. \end{DoxyCompactList}\item 
+\Hypertarget{structrapidcsv_1_1LabelParams_a273e7fb70b4bb41bd9db2654adbffd5e}\label{structrapidcsv_1_1LabelParams_a273e7fb70b4bb41bd9db2654adbffd5e} 
+int {\bfseries m\+Row\+Name\+Idx}
+\begin{DoxyCompactList}\small\item\em specifies the zero-\/based column index of the row labels. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Datastructure holding parameters controlling which row and column should be treated as labels. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{structrapidcsv_1_1LabelParams_a410048d60e7012e586e40d15692b748a}\label{structrapidcsv_1_1LabelParams_a410048d60e7012e586e40d15692b748a} 
+\index{rapidcsv::LabelParams@{rapidcsv::LabelParams}!LabelParams@{LabelParams}}
+\index{LabelParams@{LabelParams}!rapidcsv::LabelParams@{rapidcsv::LabelParams}}
+\doxysubsubsection{\texorpdfstring{LabelParams()}{LabelParams()}}
+{\footnotesize\ttfamily rapidcsv\+::\+Label\+Params\+::\+Label\+Params (\begin{DoxyParamCaption}\item[{const int}]{p\+Column\+Name\+Idx = {\ttfamily 0},  }\item[{const int}]{p\+Row\+Name\+Idx = {\ttfamily -\/1} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}}
+
+
+
+Constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\+Column\+Name\+Idx} & specifies the zero-\/based row index of the column labels, setting it to -\/1 prevents column lookup by label name, and gives access to all rows as document data. Default\+: 0 \\
+\hline
+{\em p\+Row\+Name\+Idx} & specifies the zero-\/based column index of the row labels, setting it to -\/1 prevents row lookup by label name, and gives access to all columns as document data. Default\+: -\/1 \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/home/himala/\+Documents/git\+Repos/lseg\+\_\+cpp/rapidcsv.\+h\end{DoxyCompactItemize}

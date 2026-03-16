@@ -1,3 +1,14 @@
+/**
+ * @file order_manager.h
+ * @author Himala Gunathilaka
+ * @brief This file is for the declaring the order_manager class for handling the orders
+ * @version 0.1
+ * @date 2026-03-16
+ *
+ * @copyright Copyright (c) 2026
+ *
+ */
+
 #ifndef ORDER_MANAGER_H
 #define ORDER_MANAGER_H
 
@@ -7,9 +18,14 @@
 #include <string>
 #include <bits/stdc++.h>
 #include <utility>
+#include <set>
 
 using namespace std;
 
+/**
+ * @brief Struct for buy side of order_book
+ *
+ */
 struct buy
 {
     array<char, 7> order_id;
@@ -17,6 +33,10 @@ struct buy
     double price;
 } temp_buy;
 
+/**
+ * @brief Struct for sell side of order_book
+ *
+ */
 struct sell
 {
     double price;
@@ -24,6 +44,10 @@ struct sell
     array<char, 7> order_id;
 } temp_sell;
 
+/**
+ * @brief Order book it self
+ *
+ */
 struct order
 {
     vector<pair<buy, sell>> order_book;
@@ -35,7 +59,12 @@ struct order
 class order_manager
 {
 private:
+    /**
+     * @brief collection of order book. It is a keyvalue pair
+     *
+     */
     unordered_map<string, order> books;
+    // multiset<
 
 public:
     order_manager(vector<string> types);
@@ -59,6 +88,11 @@ order_manager::~order_manager()
 {
 }
 
+/**
+ * @brief Insert new orders to the order book collection
+ *
+ * @param new_order Row of string from the orders.csv file
+ */
 void order_manager::insertOrder(vector<string> new_order)
 {
 

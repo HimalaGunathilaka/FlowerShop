@@ -1,0 +1,48 @@
+\doxysection{rapidcsv\+::no\+\_\+converter Class Reference}
+\hypertarget{classrapidcsv_1_1no__converter}{}\label{classrapidcsv_1_1no__converter}\index{rapidcsv::no\_converter@{rapidcsv::no\_converter}}
+
+
+Exception thrown when attempting to access \doxylink{classrapidcsv_1_1Document}{Document} data in a datatype which is not supported by the \doxylink{classrapidcsv_1_1Converter}{Converter} class.  
+
+
+
+
+{\ttfamily \#include $<$rapidcsv.\+h$>$}
+
+
+
+Inheritance diagram for rapidcsv\+::no\+\_\+converter\+:
+% FIG 0
+
+
+Collaboration diagram for rapidcsv\+::no\+\_\+converter\+:
+% FIG 1
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+const char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classrapidcsv_1_1no__converter_a8d61f928ca273a85ef8194dbe8f889e2}{what}} () const override  throw ()
+\begin{DoxyCompactList}\small\item\em Provides details about the exception. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Exception thrown when attempting to access \doxylink{classrapidcsv_1_1Document}{Document} data in a datatype which is not supported by the \doxylink{classrapidcsv_1_1Converter}{Converter} class. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classrapidcsv_1_1no__converter_a8d61f928ca273a85ef8194dbe8f889e2}\label{classrapidcsv_1_1no__converter_a8d61f928ca273a85ef8194dbe8f889e2} 
+\index{rapidcsv::no\_converter@{rapidcsv::no\_converter}!what@{what}}
+\index{what@{what}!rapidcsv::no\_converter@{rapidcsv::no\_converter}}
+\doxysubsubsection{\texorpdfstring{what()}{what()}}
+{\footnotesize\ttfamily const char \texorpdfstring{$\ast$}{*} rapidcsv\+::no\+\_\+converter\+::what (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const throw ( ) \hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}}
+
+
+
+Provides details about the exception. 
+
+\begin{DoxyReturn}{Returns}
+an explanatory string 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/home/himala/\+Documents/git\+Repos/lseg\+\_\+cpp/rapidcsv.\+h\end{DoxyCompactItemize}

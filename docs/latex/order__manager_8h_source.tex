@@ -1,0 +1,99 @@
+\doxysection{/home/himala/\+Documents/git\+Repos/lseg\+\_\+cpp/order\+\_\+manager.h}
+\hypertarget{order__manager_8h_source}{}\label{order__manager_8h_source}\mbox{\hyperlink{order__manager_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#ifndef\ ORDER\_MANAGER\_H}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#define\ ORDER\_MANAGER\_H}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ <array>}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ <unordered\_map>}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ <bits/stdc++.h>}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#include\ <utility>}}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \textcolor{keyword}{using\ namespace\ }std;}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00028\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structbuy}{buy}}}
+\DoxyCodeLine{00029\ \{}
+\DoxyCodeLine{00030\ \ \ \ \ array<char,\ 7>\ order\_id;}
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keywordtype}{int}\ qty;}
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keywordtype}{double}\ price;}
+\DoxyCodeLine{00033\ \}\ temp\_buy;}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00039\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structsell}{sell}}}
+\DoxyCodeLine{00040\ \{}
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keywordtype}{double}\ price;}
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keywordtype}{int}\ qty;}
+\DoxyCodeLine{00043\ \ \ \ \ array<char,\ 7>\ order\_id;}
+\DoxyCodeLine{00044\ \}\ temp\_sell;}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00050\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structorder}{order}}}
+\DoxyCodeLine{00051\ \{}
+\DoxyCodeLine{00052\ \ \ \ \ vector<pair<buy,\ sell>>\ order\_book;}
+\DoxyCodeLine{00053\ \};}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00055\ \textcolor{comment}{//\ ============================================}}
+\DoxyCodeLine{00056\ \textcolor{comment}{//\ ============================================}}
+\DoxyCodeLine{00057\ \textcolor{comment}{//\ ============================================}}
+\DoxyCodeLine{00058\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classorder__manager}{order\_manager}}}
+\DoxyCodeLine{00059\ \{}
+\DoxyCodeLine{00060\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00065\ \ \ \ \ unordered\_map<string,\ order>\ books;}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00067\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00068\ \ \ \ \ \mbox{\hyperlink{classorder__manager}{order\_manager}}(vector<string>\ types);}
+\DoxyCodeLine{00069\ \ \ \ \ \mbox{\hyperlink{classorder__manager}{\string~order\_manager}}();}
+\DoxyCodeLine{00070\ }
+\DoxyCodeLine{00071\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classorder__manager_a3f8ecd2305f538335481d0e752b63991}{insertOrder}}(vector<string>\ new\_order);}
+\DoxyCodeLine{00072\ \};}
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00074\ order\_manager::order\_manager(vector<string>\ types)}
+\DoxyCodeLine{00075\ \{}
+\DoxyCodeLine{00076\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ i\ =\ 0;\ i\ <\ types.size();\ i++)}
+\DoxyCodeLine{00077\ \ \ \ \ \{}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ type\ =\ types[i];}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ transform(type.begin(),\ type.end(),\ type.begin(),\ ::tolower);}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ books.insert(\{type,\ \mbox{\hyperlink{structorder}{order}}()\});}
+\DoxyCodeLine{00081\ \ \ \ \ \}}
+\DoxyCodeLine{00082\ \}}
+\DoxyCodeLine{00083\ }
+\DoxyCodeLine{00084\ \textcolor{comment}{//\ Runs\ when\ the\ object\ gets\ destroyed.}}
+\DoxyCodeLine{00085\ order\_manager::\string~order\_manager()}
+\DoxyCodeLine{00086\ \{}
+\DoxyCodeLine{00087\ \}}
+\DoxyCodeLine{00088\ }
+\DoxyCodeLine{00094\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classorder__manager_a3f8ecd2305f538335481d0e752b63991}{order\_manager::insertOrder}}(vector<string>\ new\_order)}
+\DoxyCodeLine{00095\ \{}
+\DoxyCodeLine{00096\ }
+\DoxyCodeLine{00097\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ i\ =\ 0;\ i\ <\ new\_order.size();\ i++)}
+\DoxyCodeLine{00098\ \ \ \ \ \{}
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ type\ =\ new\_order[i];}
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ transform(type.begin(),\ type.end(),\ type.begin(),\ ::tolower);}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Buy}}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (new\_order[2]\ ==\ \textcolor{stringliteral}{"{}1"{}})}
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ j\ =\ 0;\ j\ <\ 7;\ j++)}
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ temp\_buy.order\_id[j]\ =\ new\_order[0][j];}
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ \ \ \ \ temp\_buy.price\ =\ stod(new\_order[3]);}
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \ \ \ \ temp\_buy.qty\ =\ stoi(new\_order[4]);}
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Sell}}
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (new\_order[2]\ ==\ \textcolor{stringliteral}{"{}2"{}})}
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ j\ =\ 0;\ j\ <\ 7;\ j++)}
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ temp\_sell.order\_id[j]\ =\ new\_order[0][j];}
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \ \ \ \ temp\_sell.price\ =\ stod(new\_order[3]);}
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ \ \ \ \ temp\_sell.qty\ =\ stoi(new\_order[4]);}
+\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ books.at(type).order\_book.push\_back(make\_pair(temp\_buy,\ temp\_sell));}
+\DoxyCodeLine{00122\ \ \ \ \ \}}
+\DoxyCodeLine{00123\ \}}
+\DoxyCodeLine{00124\ }
+\DoxyCodeLine{00125\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}
