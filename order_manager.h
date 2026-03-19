@@ -22,35 +22,27 @@
 
 using namespace std;
 
-/**
- * @brief Struct for buy side of order_book
- *
- */
-struct buy
-{
-    array<char, 7> order_id;
-    int qty;
-    double price;
-} temp_buy;
-
-/**
- * @brief Struct for sell side of order_book
- *
- */
-struct sell
-{
+struct Order{
     double price;
     int qty;
-    array<char, 7> order_id;
-} temp_sell;
+    array<char,8> id;
+} temp_sell, temp_buy;
 
-/**
- * @brief Order book it self
- *
- */
-struct order
-{
-    vector<pair<buy, sell>> order_book;
+struct CompareSellPrice{
+    bool operator()(const Order& a, const Order& b) const{
+        return a.price > b.price;
+    }
+};
+
+struct CompareBuyPrice{
+    bool operator()(const Order& a, const Order& b) const{
+        return a.price < b.price;
+    }
+};
+
+struct OrderBook {
+    multiset<Order,CompareBuyPrice> asc_buy_side;
+    multiset<Order,CompareSellPrice> desc_sell_side;
 };
 
 // ============================================
@@ -63,14 +55,14 @@ private:
      * @brief collection of order book. It is a keyvalue pair
      *
      */
-    unordered_map<string, order> books;
-    // multiset<
+    unordered_map<string, OrderBook> books;    
 
 public:
     order_manager(vector<string> types);
     ~order_manager();
 
     void insertOrder(vector<string> new_order);
+    void print_stats();
 };
 
 order_manager::order_manager(vector<string> types)
@@ -79,7 +71,7 @@ order_manager::order_manager(vector<string> types)
     {
         string type = types[i];
         transform(type.begin(), type.end(), type.begin(), ::tolower);
-        books.insert({type, order()});
+        books.insert({type, OrderBook()});
     }
 }
 
@@ -95,33 +87,37 @@ order_manager::~order_manager()
  */
 void order_manager::insertOrder(vector<string> new_order)
 {
-
-    for (size_t i = 0; i < new_order.size(); i++)
+    string type = new_order[1];
+    transform(type.begin(), type.end(), type.begin(), ::tolower);
+    // cout<<type<<endl;
+    // Buy
+    if (new_order[2] == "1")
     {
-        string type = new_order[i];
-        transform(type.begin(), type.end(), type.begin(), ::tolower);
-        // Buy
-        if (new_order[2] == "1")
+        for (int j = 0; j < 7; j++)
         {
-            for (int j = 0; j < 7; j++)
-            {
-                temp_buy.order_id[j] = new_order[0][j];
-            }
-            temp_buy.price = stod(new_order[3]);
-            temp_buy.qty = stoi(new_order[4]);
+            temp_buy.id[j] = new_order[0][j];
         }
-        // Sell
-        else if (new_order[2] == "2")
+        temp_buy.price = stod(new_order[3]);
+        temp_buy.qty = stoi(new_order[4]);
+        books.at(type).asc_buy_side.insert(temp_buy);
+    }
+    // Sell
+    else if (new_order[2] == "2")
+    {
+        for (int j = 0; j < 7; j++)
         {
-            for (int j = 0; j < 7; j++)
-            {
-                temp_sell.order_id[j] = new_order[0][j];
-            }
-            temp_sell.price = stod(new_order[3]);
-            temp_sell.qty = stoi(new_order[4]);
+            temp_sell.id[j] = new_order[0][j];
         }
-        books.at(type).order_book.push_back(make_pair(temp_buy, temp_sell));
+        temp_sell.price = stod(new_order[3]);
+        temp_sell.qty = stoi(new_order[4]);
+        books.at(type).desc_sell_side.insert(temp_sell);
     }
 }
+
+void order_manager::print_stats(){
+    cout<<books.size()<<endl;
+    cout<<books.at("rose").asc_buy_side.size()<<endl;
+}
+
 
 #endif

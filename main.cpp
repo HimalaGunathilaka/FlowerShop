@@ -12,7 +12,7 @@ order_manager order_mgr(types);
 
 int main()
 {
-    rapidcsv::Document doc("colhdr.csv");
+    rapidcsv::Document doc("data/orders.csv");
 
     int num_of_rows = doc.GetRowCount();
 
@@ -22,5 +22,6 @@ int main()
         order_mgr.insertOrder(row);
     }
 
+    order_mgr.print_stats();
     return 0;
 }
