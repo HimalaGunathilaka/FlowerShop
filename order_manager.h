@@ -19,6 +19,7 @@
 #include <bits/stdc++.h>
 #include <utility>
 #include <set>
+#include <list>
 
 using namespace std;
 
@@ -41,8 +42,8 @@ struct CompareBuyPrice{
 };
 
 struct OrderBook {
-    map<double,vector<Order>> asc_buy_side;
-    map<double,vector<Order>,greater<double>> desc_sell_side;
+    map<double,list<Order>> asc_buy_side;
+    map<double,list<Order>,greater<double>> desc_sell_side;
 };
 
 // ============================================
