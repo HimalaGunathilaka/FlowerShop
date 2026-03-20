@@ -41,8 +41,8 @@ struct CompareBuyPrice{
 };
 
 struct OrderBook {
-    multiset<Order,CompareBuyPrice> asc_buy_side;
-    multiset<Order,CompareSellPrice> desc_sell_side;
+    map<double,vector<Order>> asc_buy_side;
+    map<double,vector<Order>,greater<double>> desc_sell_side;
 };
 
 // ============================================
@@ -99,7 +99,7 @@ void order_manager::insertOrder(vector<string> new_order)
         }
         temp_buy.price = stod(new_order[3]);
         temp_buy.qty = stoi(new_order[4]);
-        books.at(type).asc_buy_side.insert(temp_buy);
+        books.at(type).asc_buy_side[temp_buy.price].push_back(temp_buy);
     }
     // Sell
     else if (new_order[2] == "2")
@@ -110,7 +110,7 @@ void order_manager::insertOrder(vector<string> new_order)
         }
         temp_sell.price = stod(new_order[3]);
         temp_sell.qty = stoi(new_order[4]);
-        books.at(type).desc_sell_side.insert(temp_sell);
+        books.at(type).desc_sell_side[temp_sell.price].push_back(temp_sell);
     }
 }
 
