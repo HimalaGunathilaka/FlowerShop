@@ -156,6 +156,7 @@ void order_manager::insertOrder(vector<string> new_order)
     }else{
         throw runtime_error("Invalid side!");
     }
+    report.insert_row(push_this);
 }
 
 void order_manager::print_stats(){
