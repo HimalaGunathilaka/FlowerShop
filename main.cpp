@@ -1,16 +1,18 @@
-#include "rapidcsv.h"
-#include <vector>
 #include <iostream>
-#include <array>
 #include <bits/stdc++.h>
+
 #include "order_manager.h"
+#include "execution_report.h"
 
 using namespace std;
 
-vector<string> types = {"rose", "lavender", "lotus", "tulip", "orchid"};
+const string output = "data/execution_rep.csv";
 
+const vector<string> types = {"rose", "lavender", "lotus", "tulip", "orchid"};
+const vector<string> headers = {"Order_ID","Client_Order","Instrument","Side","Exec_Status","Quantity","Price"};
 
-order_manager order_mgr(types);
+execution_report exe_rpt(headers,output,100);
+order_manager order_mgr(types,exe_rpt);
 
 int main()
 {
@@ -24,23 +26,22 @@ int main()
         vector<string> row = doc.GetRow<string>(i);
         try{
             order_mgr.insertOrder(row);
+            order_mgr.process_orders();
         }catch(const exception& e){
             cerr<<"Error detected: "<<e.what()<<endl;
+            
+            vector<string> error_input;
+            error_input.push_back(row[0]);
+            error_input.push_back(row[1]);
+            error_input.push_back(row[2]);
+            error_input.push_back("Reject");
+            error_input.push_back(row[3]);
+            error_input.push_back(row[4]);
+            exe_rpt.insert_row(error_input);
         }
     }
 
-    order_mgr.print_stats();
+    // order_mgr.print_stats();
 
-    // rapidcsv::Document doc("data/execution_rep.csv");
-    
-    // for(size_t i=0; i< doc.GetRowCount();i++){
-    //     vector<string> row = doc.GetRow<string>(i);
-    //     cout<<endl;
-    //     for(string ele:row){
-    //         cout<<ele<<" ";
-    //     }
-
-    //     cout<<i<<endl;
-    // }
     return 0;
 }
